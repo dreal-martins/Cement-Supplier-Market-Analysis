@@ -172,7 +172,7 @@ const CementSupplierDashboard = () => {
                         `${name} ${(percent * 100).toFixed(0)}%`
                       }
                     >
-                      {supplierDistributionData.map((entry, index) => (
+                      {supplierDistributionData.map((_, index) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={COLORS[index % COLORS.length]}
@@ -255,7 +255,7 @@ const CementSupplierDashboard = () => {
                     cursor={{ fill: "rgba(0,0,0,0.1)" }}
                   />
                   <Bar dataKey="problemRate" fill="#8884d8">
-                    {supplierProblemData.map((entry, index) => (
+                    {supplierProblemData.map((_, index) => (
                       <Cell
                         key={`cell-${index}`}
                         fill={COLORS[index % COLORS.length]}
