@@ -49,12 +49,12 @@ const CementSupplierDashboard = () => {
     { name: "Others", value: 15 },
   ];
 
-  // Supplier Problem Encounter Data
   const supplierProblemData = [
-    { supplier: "Dangote", problemRate: 63 },
-    { supplier: "Lafarge", problemRate: 32 },
-    { supplier: "Bua Group", problemRate: 18 },
-    { supplier: "Others", problemRate: 15 },
+    { region: "North West", Dangote: 20, Lafarge: 10, BuaGroup: 5 },
+    { region: "North Central", Dangote: 15, Lafarge: 8, BuaGroup: 6 },
+    { region: "South East", Dangote: 25, Lafarge: 12, BuaGroup: 7 },
+    { region: "South West", Dangote: 18, Lafarge: 9, BuaGroup: 4 },
+    { region: "South South", Dangote: 22, Lafarge: 11, BuaGroup: 6 },
   ];
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
@@ -234,14 +234,14 @@ const CementSupplierDashboard = () => {
           <Card>
             <CardHeader>
               <CardTitle className="text-lg md:text-xl">
-                Supplier Problem Rates
+                Supplier Problem Rates by Region
               </CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={supplierProblemData}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="supplier" />
+                  <XAxis dataKey="region" />
                   <YAxis
                     label={{
                       value: "Problem Rate (%)",
@@ -254,14 +254,10 @@ const CementSupplierDashboard = () => {
                     contentStyle={{ fontSize: "12px" }}
                     cursor={{ fill: "rgba(0,0,0,0.1)" }}
                   />
-                  <Bar dataKey="problemRate" fill="#8884d8">
-                    {supplierProblemData.map((_, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Bar>
+                  <Legend />
+                  <Bar dataKey="Dangote" fill="#8884d8" />
+                  <Bar dataKey="Lafarge" fill="#82ca9d" />
+                  <Bar dataKey="BuaGroup" fill="#ffc658" />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
